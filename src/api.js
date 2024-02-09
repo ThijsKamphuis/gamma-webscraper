@@ -2,7 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 6969;
 
 var cors = require('cors');
 app.use(cors({origin: '*'}));
