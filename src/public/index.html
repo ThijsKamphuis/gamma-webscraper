@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <title>GAMMA Barcodes</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/barcodes/JsBarcode.ean-upc.min.js"></script>
+
+</head>
+<body>
+    <h1>KASSA BARCODEKAART GENERATOR</h1>
+
+    <label for="artinput"></label><input id="artinput" type="text" placeholder="artnr">
+    <button onclick="getInfo()" type="button">Generate</button>
+
+    <p id="productname"></p>
+    <img id="productimg" src="" width="200px" alt="">
+    <svg id="ean"></svg>
+
+</body>
+</html>
