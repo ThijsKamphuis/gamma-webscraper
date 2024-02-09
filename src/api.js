@@ -32,5 +32,3 @@ app.get("/artinfo", async (req, res) => {
 app.listen(port,  () => {
     console.log( 'Server is up and running on ' + port );
 });
-
-app.use(express.static(path.join(__dirname,'public')));
