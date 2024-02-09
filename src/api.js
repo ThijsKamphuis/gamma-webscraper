@@ -3,6 +3,8 @@ const cheerio = require('cheerio');
 const express = require("express");
 const app = express();
 const port = 6969;
+const path = require('path');
+
 
 var cors = require('cors');
 app.use(cors({origin: '*'}));
@@ -31,4 +33,4 @@ app.listen(port,  () => {
     console.log( 'Server is up and running on ' + port );
 });
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname,'public')));
