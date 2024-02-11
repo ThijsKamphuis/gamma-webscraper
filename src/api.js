@@ -9,6 +9,7 @@ const path = require('path');
 var cors = require('cors');
 app.use(cors({origin: '*'}));
 
+document.title = 'GAMMA Product API'
 
 
 async function scrapeSite(artnr) {
