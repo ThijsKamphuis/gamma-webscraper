@@ -2,7 +2,7 @@
 async function getInfo() {
     const artnr = document.getElementById('artinput').value
     let result;
-    await fetch(`http://raspberrypi:6969/artinfo?artnr=${artnr}`)
+    await fetch(`https://api.gamma.thijsk.systems/artinfo?artnr=${artnr}`)
         .then(r => r.json())
         .then(r => result = r)
 
