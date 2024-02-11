@@ -4,12 +4,8 @@ const express = require("express");
 const app = express();
 const port = 6969;
 
-
-var cors = require('cors');
+const cors = require('cors');
 app.use(cors({origin: '*'}));
-
-document.title = 'GAMMA Product API'
-
 
 async function scrapeSite(artnr) {
     const url = `https:/gamma.nl/p/${artnr}`;
