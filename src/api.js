@@ -3,7 +3,6 @@ const cheerio = require('cheerio');
 const express = require("express");
 const app = express();
 const port = 6969;
-const path = require('path');
 
 
 var cors = require('cors');
