@@ -20,10 +20,10 @@ async function scrapeSite(artnr) {
     return(result);
 }
 
+
 app.get("/artinfo", async (req, res) => {
-    const artnr = req.query;
-    console.log(artnr)
-    res.send(await scrapeSite(artnr.artnr));
+    const {artnr} = req.query;
+    res.send(await scrapeSite(artnr));
 });
 
 app.listen(port,  () => {
