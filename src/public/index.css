@@ -2,6 +2,9 @@
     .noprint {
         visibility: hidden;
     }
+    #product {
+        break-inside: avoid;
+    }
 }
 body {
     font-family: "Overpass", sans-serif;
