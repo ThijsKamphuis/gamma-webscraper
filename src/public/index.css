@@ -1,17 +1,48 @@
-
+@media print {
+    .noprint {
+        visibility: hidden;
+    }
+}
 body {
     font-family: "Overpass", sans-serif;
 }
 
+#top {
+    display: flex;
+    justify-content: space-between;
+    page-break-after: always;
+
+}
+
+#input {
+    flex-shrink: 0;
+}
+
 .product {
-    border-width: 1px;
-    border-color: #000;
-    border-style: solid;
+    flex: 1 0 33%;
+    max-width: 33vw;
+}
+
+#artlist {
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+#artlist > * {
+    background: #e1e1e1;
+    padding: 4px;
+    padding-inline: 10px;
+    border-radius: 10px;
+    max-width: fit-content;
+    height: fit-content;
 }
 
 #products {
     display: flex;
+    gap: 5px;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    justify-content: start;
 }
