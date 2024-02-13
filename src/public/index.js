@@ -14,9 +14,18 @@ function addArticle(artnr) {
     let artList = document.getElementById("artlist");
     let art = document.createElement("li");
     art.classList.add("artnr")
+    art.id = artnr
     art.textContent = artnr;
     artList.appendChild(art);
 }
+
+document.getElementById("artlist").addEventListener("click", function(click) {
+    // Check if the clicked element is the delete button
+    if (click.target && click.target.classList.contains("artnr")) {
+        // Delete the parent <li> element
+        click.target.remove();
+    }
+});
 
 function clearList() {
     let artList = document.getElementById("artlist");
@@ -25,17 +34,21 @@ function clearList() {
     }
 }
 
-async function fetchProducts() {
+async function generateProducts() {
     clearProducts()
-    
 
     const artList = document.getElementsByClassName("artnr");
     const artNrList = Array.from(artList);
 
     for (const li of artNrList) {
         let productInfo;
-        await fetch(`https://api.gamma.thijsk.systems/artinfo?artnr=${li.textContent}`)
-            .then(r => r.json()).then(r => productInfo = r);
+        try {
+            await fetch(`https://api.gamma.thijsk.systems/artinfo?artnr=${li.textContent}`)
+                .then(r => r.json()).then(r => productInfo = r);
+        } catch (err) {
+            console.log(`Product ${li.textContent} does not exist`);
+            continue;
+        }
 
         const product = document.createElement("div");
         product.classList.add("product");

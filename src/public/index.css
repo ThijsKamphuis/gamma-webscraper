@@ -27,20 +27,27 @@ body {
 }
 
 #artlist {
-    list-style-type: none;
+    list-style: none;
     display: flex;
     flex-flow: row wrap;
     flex-grow: 1;
     gap: 10px;
 }
 
-#artlist > * {
+.artnr{
     background: #e1e1e1;
-    padding: 4px;
+    padding: 5px;
     padding-inline: 10px;
+    font-size: 16px;
     border-radius: 10px;
-    max-width: fit-content;
+    width: 60px;
     height: fit-content;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.artnr:hover {
+    background-color: rgba(255, 100, 100, 1);
 }
 
 #products {

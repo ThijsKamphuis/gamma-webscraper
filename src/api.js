@@ -9,7 +9,11 @@ app.use(cors({origin: '*'}));
 
 async function scrapeSite(artnr) {
     const url = `https:/gamma.nl/p/${artnr}`;
-    const { data } = await axios.get(url);
+    const { data } = await axios.get(url)
+        .catch(err => {
+            throw new Error(String(err.response.status));
+        });
+
     const $ = cheerio.load(data);
 
     const result = {};
@@ -17,13 +21,19 @@ async function scrapeSite(artnr) {
     result.img = ($('img.product-main-image').attr('data-zoom'));
     result.ean = ($(`div[data-product-code="${artnr}"]`).attr('data-ean'));
 
-    return(result);
+    return result;
+
 }
 
 
 app.get("/artinfo", async (req, res) => {
     const {artnr} = req.query;
-    res.send(await scrapeSite(artnr));
+    try {
+        res.send(await scrapeSite(artnr));
+    } catch (err) {
+
+        res.sendStatus(err.message);
+    }
 });
 
 app.listen(port,  () => {
