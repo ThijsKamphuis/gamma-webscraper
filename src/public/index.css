@@ -8,22 +8,67 @@
 }
 body {
     font-family: "Overpass", sans-serif;
+
 }
 
 #top {
     display: flex;
     justify-content: space-between;
     page-break-after: always;
-
+    margin-bottom: 20px;
 }
 
 #input {
     flex-shrink: 0;
 }
 
-.product {
-    flex: 1 0 33%;
-    max-width: 33vw;
+/*products*/
+#products { /*contains all products*/
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.product { /*product container*/
+    display: flex;
+    flex-direction: column;
+    max-width: 220px;
+}
+
+.productname { /*product name*/
+    text-align: center;
+    margin: 0;
+}
+
+.productattr { /*product attributes (img + data)*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.productimg { /*product image*/
+    max-height: 100px;
+}
+
+.productdata { /*product data (dimensions + artnr + ean)*/
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.productsize { /*product dimensions*/
+    margin: auto;
+    font-size: 14px;
+}
+
+.productnr { /*product artnr*/
+    font-size: 10px;
+    margin: 0;
+}
+
+.productean { /*product ean*/
+    margin: 0 10px 10px 0;
 }
 
 #artlist {
@@ -50,9 +95,3 @@ body {
     background-color: rgba(255, 100, 100, 1);
 }
 
-#products {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    justify-content: start;
-}
