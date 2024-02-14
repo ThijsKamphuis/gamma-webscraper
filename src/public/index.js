@@ -1,6 +1,6 @@
 let artinput = document.getElementById('artinput');
 artinput.addEventListener("keydown", function (event) {
-    if (event.key === " "|| event.key === "Enter") {
+    if (event.key === " " || event.key === "Enter") {
         event.preventDefault();
         let artnr = artinput.value.trim();
         if (artnr !== "" && !isNaN(Number(artnr)) && artnr.length === 6) {
@@ -59,19 +59,35 @@ async function generateProducts() {
         productName.innerText = productInfo.name;
         product.appendChild(productName);
 
+        const productAttr = document.createElement("div");
+        productAttr.classList.add("productattr");
+        productAttr.id = `productattr-${li.textContent}`;
+        product.appendChild(productAttr);
 
         let productImg = document.createElement("img");
         productImg.classList.add("productimg");
         productImg.src = productInfo.img;
-        productImg.style.maxHeight = '100px';
-        productImg.style.padding= '10px'
-        product.appendChild(productImg);
+        productAttr.appendChild(productImg);
 
+        const productData = document.createElement("div");
+        productData.classList.add("productdata");
+        productData.id = `productdata-${li.textContent}`;
+        productAttr.appendChild(productData);
+
+        let productSize = document.createElement("p");
+        productSize.classList.add("productsize");
+        productSize.innerText = '69x69x69cm'; //TODO: EXTRACT FROM NAME
+        productData.appendChild(productSize);
+
+        let productNr = document.createElement("p");
+        productNr.classList.add("productnr");
+        productNr.innerText = li.textContent;
+        productData.appendChild(productNr);
 
         let productEAN = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        productEAN.classList.add("productEAN");
+        productEAN.classList.add("productean");
         productEAN.setAttribute("id", `EAN-${li.textContent}`);
-        product.appendChild(productEAN);
+        productData.appendChild(productEAN);
 
         document.getElementById("products").appendChild(product);
 
@@ -80,6 +96,7 @@ async function generateProducts() {
             background: 'rgba(0,0,0,0)',
             width: 1,
             height: 50,
+            margin: 0,
         });
     }
 }
@@ -90,4 +107,5 @@ function clearProducts() {
         products.removeChild(products.lastChild)
     }
 }
+
 
