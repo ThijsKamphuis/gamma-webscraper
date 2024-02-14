@@ -19,7 +19,7 @@ async function scrapeSite(artnr) {
 
     let result = {};
     result.name = name;
-    result.dimensions = size;
+    result.size = size;
     result.img = ($('img.product-main-image').attr('data-src'));
     result.ean = ($(`div[data-product-code="${artnr}"]`).attr('data-ean'));
     return result;
