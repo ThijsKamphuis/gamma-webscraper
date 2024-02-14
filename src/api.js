@@ -25,7 +25,6 @@ async function scrapeSite(artnr) {
 
 }
 
-
 app.get("/artinfo", async (req, res) => {
     const {artnr} = req.query;
     try {
