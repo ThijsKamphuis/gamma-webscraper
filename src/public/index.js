@@ -76,7 +76,7 @@ async function generateProducts() {
 
         let productSize = document.createElement("p");
         productSize.classList.add("productsize");
-        productSize.innerText = '69x69x69cm'; //TODO: EXTRACT FROM NAME
+        productSize.innerText = productInfo.size;
         productData.appendChild(productSize);
 
         let productNr = document.createElement("p");
