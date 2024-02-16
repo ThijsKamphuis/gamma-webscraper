@@ -10,22 +10,32 @@
 
 </head>
 <body>
-    <div id="top" class="noprint">
-        <div id="input">
-            <h1>GAMMA Barcode Generator</h1>
-            <p>Thijs Kamphuis &#169; 2024</p>
+    <div id="top">
+        <div id="devbar">
+            <div id="api-select">
+                <p>API:</p>
+                <input type="radio" id="production" name="option" value="value1" checked>
+                <label for="production">Production</label>
+                <input type="radio" id="dev" name="option" value="value2">
+                <label for="dev">Dev</label>
 
-            <label for="artinput"></label><input id="artinput" type="text" placeholder="artnr">
-            <button onclick="clearList()" type="button">Clear</button>
-            <button onclick="generateProducts()" type="button">Generate</button>
+
+            </div>
+            <p id="copyright">Thijs Kamphuis &#169; 2024</p>
         </div>
 
-        <ul id="artlist"></ul>
+        <div id="main">
+            <div id="input">
+                <h1>GAMMA Barcode Generator</h1>
+
+
+                <label for="artinput"></label><input id="artinput" type="text" placeholder="artnr">
+                <button onclick="clearList()" type="button">Clear</button>
+                <button onclick="generateProducts()" type="button">Generate</button>
+            </div>
+            <ul id="artlist"></ul>
+        </div>
     </div>
-
-    <div id="products">
-
-    </div>
-
+    <div id="products"></div>
 </body>
 </html>
