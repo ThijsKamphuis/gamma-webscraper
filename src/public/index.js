@@ -50,7 +50,7 @@ async function generateProducts() {
             continue;
         }
 
-        const product = document.createElement("div");
+        let product = document.createElement("div");
         product.classList.add("product");
         product.id = `product-${li.textContent}`;
 
@@ -59,7 +59,7 @@ async function generateProducts() {
         productName.innerText = productInfo.name;
         product.appendChild(productName);
 
-        const productAttr = document.createElement("div");
+        let productAttr = document.createElement("div");
         productAttr.classList.add("productattr");
         productAttr.id = `productattr-${li.textContent}`;
         product.appendChild(productAttr);
@@ -69,7 +69,7 @@ async function generateProducts() {
         productImg.src = productInfo.img;
         productAttr.appendChild(productImg);
 
-        const productData = document.createElement("div");
+        let productData = document.createElement("div");
         productData.classList.add("productdata");
         productData.id = `productdata-${li.textContent}`;
         productAttr.appendChild(productData);
