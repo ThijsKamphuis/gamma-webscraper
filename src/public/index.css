@@ -9,11 +9,7 @@
 body {
     font-family: "Overpass", sans-serif;
     margin: 0;
-}
-
-/*top menu*/
-#top {
-    user-select: none;
+    overflow-x: hidden;
 }
 
 #devbar {
@@ -27,9 +23,18 @@ body {
 #api-select {
     display: inline-flex;
     align-items: center;
-    height: 20px;
-    margin-left: 8px;
+    margin: 0 0 0 8px;
 }
+
+#api {
+    margin: 0;
+}
+
+#address {
+    visibility: hidden;
+}
+
+
 
 input[type="radio"] {
     margin-top: -4px;
@@ -40,23 +45,31 @@ input[type="radio"] {
 }
 
 #main {
-    display: flex;
-    justify-content: space-between;
-    page-break-after: always;
-    margin: 8px 8px 20px 8px;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+
+#side {
+    margin: 0 0 0 8px;
 }
 
 h1 { /*title*/
-    margin: 0;
+    margin: 0 0 0 8px;
 }
 
 #input {
-    flex-shrink: 0;
+    margin: 0 0 0 8px;
 }
 
 #artlist {
-    margin: 5px 0 0 0;
+    margin: 10px 0 0 0;
     user-select: all;
+    overflow: auto;
+    overflow-x: hidden;
+    max-height: 90vh;
+    min-width: 265px;
+    max-width: 265px;
 }
 
 /*products*/
@@ -66,10 +79,14 @@ h1 { /*title*/
     justify-content: flex-start;
     margin-left: 8px;
     gap: 20px;
-
+    height: fit-content;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 90vh;
 }
 
 .product { /*product container*/
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     max-width: 220px;
@@ -117,15 +134,10 @@ h1 { /*title*/
 }
 
 #artlist {
-    list-style: none;
-    display: flex;
-    flex-flow: row wrap;
-    flex-grow: 1;
-    gap: 10px;
+    list-style: square;
 }
 
 .artnr{
-    background: #e1e1e1;
     padding: 5px;
     padding-inline: 10px;
     font-size: 16px;

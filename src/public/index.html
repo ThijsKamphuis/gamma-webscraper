@@ -10,32 +10,35 @@
 
 </head>
 <body>
-    <div id="top">
-        <div id="devbar">
-            <div id="api-select">
-                <p>API:</p>
-                <input type="radio" id="production" name="option" value="value1" checked>
-                <label for="production">Production</label>
-                <input type="radio" id="dev" name="option" value="value2">
-                <label for="dev">Dev</label>
-
-
-            </div>
-            <p id="copyright">Thijs Kamphuis &#169; 2024</p>
+    <div id="devbar">
+        <div id="api-select">
+            <p id="api">API:</p>
+            <input onclick="toggleAPI()" type="radio" id="production" name="apitoggle" value="value1" checked>
+            <label for="production">Production</label>
+            <input onclick="toggleAPI()" type="radio" id="dev" name="apitoggle" value="value2">
+            <label for="dev">Dev</label>
         </div>
+        <div id="address">
+            <label for="ip">IP:</label>
+            <input type="text" id="ip" name="ip" value="localhost">
 
-        <div id="main">
-            <div id="input">
-                <h1>GAMMA Barcode Generator</h1>
-
-
-                <label for="artinput"></label><input id="artinput" type="text" placeholder="artnr">
-                <button onclick="clearList()" type="button">Clear</button>
-                <button onclick="generateProducts()" type="button">Generate</button>
-            </div>
+            <label for="port">PORT:</label>
+            <input type="text" id="port" name="port" value="6969">
+        </div>
+        <p id="copyright">Thijs Kamphuis &#169; 2024</p>
+    </div>
+    <h1>GAMMA Barcode Generator</h1>
+    <div id="input">
+        <label for="artinput"></label><input id="artinput" type="text" placeholder="artnr">
+        <button onclick="clearList()" type="button">Clear</button>
+        <button onclick="generateProducts()" type="button">Generate</button>
+    </div>
+    <div id="main">
+        <div id="side">
             <ul id="artlist"></ul>
         </div>
+        <div id="products"></div>
     </div>
-    <div id="products"></div>
+
 </body>
 </html>
