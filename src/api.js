@@ -22,6 +22,8 @@ async function scrapeSite(artnr) {
     result.size = size;
     result.img = ($('img.product-main-image').attr('data-src'));
     result.ean = ($(`div[data-product-code="${artnr}"]`).attr('data-ean'));
+    result.type = $('th.attrib:contains("Type")').next('td.value').find('a.feature-value').text();
+    console.log(result);
     return result;
 }
 
