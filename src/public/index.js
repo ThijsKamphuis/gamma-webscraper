@@ -1,3 +1,25 @@
+let prodAPI = "https://api.gamma.thijsk.systems";
+let devAPI = "localhost";
+let devAPIPort = "6969";
+
+let currentAPI = prodAPI
+
+// API SELECTOR
+function toggleAPI() {
+    let apiProduction = document.getElementById("production");
+    let apiDev = document.getElementById("dev");
+    let addressField = document.getElementById("address");
+
+    if (apiProduction.checked) {
+        addressField.style.visibility = "hidden";
+        currentAPI = prodAPI
+    } else if (apiDev.checked) {
+        addressField.style.visibility = "visible";
+        currentAPI = devAPI
+    }
+}
+
+// ART INPUT
 let artinput = document.getElementById('artinput');
 artinput.addEventListener("keydown", function (event) {
     if (event.key === " " || event.key === "Enter") {
@@ -19,10 +41,9 @@ function addArticle(artnr) {
     artList.appendChild(art);
 }
 
+// CLICK TO DELETE
 document.getElementById("artlist").addEventListener("click", function(click) {
-    // Check if the clicked element is the delete button
     if (click.target && click.target.classList.contains("artnr")) {
-        // Delete the parent <li> element
         click.target.remove();
     }
 });
@@ -35,6 +56,15 @@ function clearList() {
 }
 
 async function generateProducts() {
+    let apiAdress;
+    if (currentAPI === devAPI) {
+        devAPI =`http://${document.getElementById("ip").value.trim()}`;
+
+        apiAdress = `${devAPI}:${devAPIPort}`;
+    } else {
+        apiAdress = currentAPI;
+    }
+
     clearProducts()
 
     const artList = document.getElementsByClassName("artnr");
@@ -43,7 +73,7 @@ async function generateProducts() {
     for (const li of artNrList) {
         let productInfo;
         try {
-            await fetch(`https://api.gamma.thijsk.systems/artinfo?artnr=${li.textContent}`)
+            await fetch(`${apiAdress}/artinfo?artnr=${li.textContent}`)
                 .then(r => r.json()).then(r => productInfo = r);
         } catch (err) {
             console.log(`Product ${li.textContent} does not exist`);
