@@ -1,5 +1,5 @@
 let prodAPI = "https://api.gamma.thijsk.systems";
-let devAPI = "localhost";
+let devAPI = "192.168.100.201";
 let devAPIPort = "6969";
 
 let currentAPI = prodAPI
@@ -66,7 +66,6 @@ async function generateProducts() {
     }
 
     clearProducts()
-
     const artList = document.getElementsByClassName("artnr");
     const artNrList = Array.from(artList);
 
@@ -80,46 +79,75 @@ async function generateProducts() {
             continue;
         }
 
+        // CREATE CATEGORY
+        let category;
+        let products;
+        if (!document.getElementById(productInfo.type)) {
+            category = document.createElement("div");
+            category.id = productInfo.type;
+            let title = document.createElement("h2");
+            title.id = productInfo.name;
+            title.textContent = productInfo.type;
+            title.classList.add("category-title");
+            category.appendChild(title);
+            products = document.createElement("div");
+            products.classList.add("products");
+            category.appendChild(products);
+            document.getElementById("categories").appendChild(category);
+        } else {
+            category = document.getElementById(productInfo.type);
+            products = category.querySelector('.products');
+        }
+
+        // PRODUCT CONTAINER
         let product = document.createElement("div");
         product.classList.add("product");
         product.id = `product-${li.textContent}`;
 
+        // TITLE
         let productName = document.createElement("p");
         productName.classList.add("productname");
         productName.innerText = productInfo.name;
         product.appendChild(productName);
 
+        // ATTRIBUTES CONTAINER
         let productAttr = document.createElement("div");
         productAttr.classList.add("productattr");
         productAttr.id = `productattr-${li.textContent}`;
         product.appendChild(productAttr);
 
+        // IMAGE
         let productImg = document.createElement("img");
         productImg.classList.add("productimg");
         productImg.src = productInfo.img;
         productAttr.appendChild(productImg);
 
+        // DATA CONTAINER
         let productData = document.createElement("div");
         productData.classList.add("productdata");
         productData.id = `productdata-${li.textContent}`;
         productAttr.appendChild(productData);
 
+        // DIMENSIONS
         let productSize = document.createElement("p");
         productSize.classList.add("productsize");
         productSize.innerText = productInfo.size;
         productData.appendChild(productSize);
 
+        // PRODUCT NUMBER
         let productNr = document.createElement("p");
         productNr.classList.add("productnr");
         productNr.innerText = li.textContent;
         productData.appendChild(productNr);
 
+        // BARCODE
         let productEAN = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         productEAN.classList.add("productean");
         productEAN.setAttribute("id", `EAN-${li.textContent}`);
         productData.appendChild(productEAN);
 
-        document.getElementById("products").appendChild(product);
+        // ADD PRODUCT TO CATEGORY
+        products.appendChild(product);
 
         JsBarcode(`#EAN-${li.textContent}`, productInfo.ean, {
             format: "ean13",
@@ -132,9 +160,9 @@ async function generateProducts() {
 }
 
 function clearProducts() {
-    let products = document.getElementById("products");
-    while (products.firstChild) {
-        products.removeChild(products.lastChild)
+    let categories = document.getElementById("categories");
+    while (categories.firstChild) {
+        categories.removeChild(categories.lastChild)
     }
 }
 
