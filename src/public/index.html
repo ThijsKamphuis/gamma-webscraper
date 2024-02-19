@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <div id="devbar">
+    <div id="devbar" class="noprint">
         <div id="api-select">
             <p id="api">API:</p>
             <input onclick="toggleAPI()" type="radio" id="production" name="apitoggle" value="value1" checked>
@@ -20,24 +20,24 @@
         </div>
         <div id="address">
             <label for="ip">IP:</label>
-            <input type="text" id="ip" name="ip" value="localhost">
+            <input type="text" id="ip" name="ip" value="192.168.100.201">
 
             <label for="port">PORT:</label>
             <input type="text" id="port" name="port" value="6969">
         </div>
         <p id="copyright">Thijs Kamphuis &#169; 2024</p>
     </div>
-    <h1>GAMMA Barcode Generator</h1>
-    <div id="input">
+    <h1 class="noprint">GAMMA Barcode Generator</h1>
+    <div id="input" class="noprint">
         <label for="artinput"></label><input id="artinput" type="text" placeholder="artnr">
         <button onclick="clearList()" type="button">Clear</button>
         <button onclick="generateProducts()" type="button">Generate</button>
     </div>
     <div id="main">
-        <div id="side">
+        <div id="side" class="noprint">
             <ul id="artlist"></ul>
         </div>
-        <div id="products"></div>
+        <div id="categories"></div>
     </div>
 
 </body>

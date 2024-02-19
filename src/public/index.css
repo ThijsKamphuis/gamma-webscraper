@@ -1,11 +1,25 @@
 @media print {
-    #top {
+    .noprint {
+         display: none;
+     }
+    .noprint  * {
         display: none;
     }
-    .product {
-        break-inside: avoid;
+    #categories > * {
+        page-break-inside: avoid;
+    }
+    .products {
+        page-break-inside: avoid;
+    }
+    body * {
+        overflow: visible !important;
     }
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     font-family: "Overpass", sans-serif;
     margin: 0;
@@ -64,31 +78,36 @@ h1 { /*title*/
 
 #artlist {
     margin: 10px 0 0 0;
-    user-select: all;
-    overflow: auto;
+    user-select: none;
+    overflow-y: scroll;
     overflow-x: hidden;
     max-height: 90vh;
     min-width: 265px;
     max-width: 265px;
 }
 
+.category-title {
+    margin: 50px 0 0;
+}
+#categories {
+    overflow-y: scroll;
+    max-height: 90vh;
+}
+
 /*products*/
-#products { /*contains all products*/
+.products { /*contains all products*/
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-left: 8px;
     gap: 20px;
-    height: fit-content;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    max-height: 90vh;
 }
 
 .product { /*product container*/
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    width: 220px;
     max-width: 220px;
     height: 135px;
     max-height: 135px;
