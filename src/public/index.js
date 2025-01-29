@@ -1,4 +1,4 @@
-let prodAPI = "https://api.gamma.thijsk.systems";
+let prodAPI = "https://api.gamma.thijsk.nl";
 let devAPI = "192.168.100.201";
 let devAPIPort = "6969";
 
